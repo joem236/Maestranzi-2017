@@ -58,6 +58,7 @@ void Robot::DisabledInit(){
 
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
+
 }
 
 void Robot::AutonomousInit() {
@@ -76,11 +77,12 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Cancel();
-	manualDrive->Start();
+	//manualDrive->Start();
 }
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	drive.MecanumDrive_Cartesian(oi.getJoystick1()->getX(),oi.getJoystick1()->getY(),oi.getJoystick1()->getZ());
 }
 
 void Robot::TestPeriodic() {
