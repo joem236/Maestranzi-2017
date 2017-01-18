@@ -82,7 +82,13 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
-	drive.MecanumDrive_Cartesian(oi.getJoystick1()->getX(),oi.getJoystick1()->getY(),oi.getJoystick1()->getZ());
+	/*
+	std::shared_ptr<RobotDrive> driver = drive.get()->driver;
+	std::shared_ptr<Joystick> joystick1 = oi.get()->joystick1;
+	driver->MecanumDrive_Cartesian(joystick1->GetX(frc::GenericHID::JoystickHand::kLeftHand),
+								   joystick1->GetY(frc::GenericHID::JoystickHand::kLeftHand),
+								   joystick1->GetZ(frc::GenericHID::JoystickHand::kLeftHand));
+								   */
 }
 
 void Robot::TestPeriodic() {
